@@ -1,0 +1,10 @@
+{% extends "tickets/layout.html" %}
+
+{% block body %}
+    <h1>All Booked Tickets:</h1>
+    <ul>
+    {% for ticket in tickets %}
+        <li>{{ticket.id}}: {{ticket}}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

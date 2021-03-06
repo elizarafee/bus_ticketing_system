@@ -1,0 +1,10 @@
+{% extends "tickets/layout.html" %}
+
+{% block body %}
+    <h1>All Buses:</h1>
+    <ul>
+    {% for bus in buses %}
+        <li>{{bus.id}}: {{bus}}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
