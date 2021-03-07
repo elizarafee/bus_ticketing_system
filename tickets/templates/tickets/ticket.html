@@ -1,0 +1,15 @@
+{% extends "tickets/layout.html" %}
+
+{% block body %}
+    <h1>Ticket Details of Pessenger : {{ ticket.pessenger_name }}</h1>
+    <div>
+        <h3>Pessenger Name: {{ ticket.pessenger_name }}</h3>
+        <h3>Phone Number: {{ ticket.phone_number }}</h3>
+        <h3>Dmail: {{ ticket.email }}</h3>
+        <h3>Departure: {{ ticket.departure }}</h3>
+        <h3>Arrival: {{ ticket.arrival }}</h3>
+        <h3>Bus: {{ ticket.bus_name }}</h3>
+        <h3>Date: {{ ticket.date }}</h3>
+        <h3>Time: {{ ticket.time }}</h3>
+    </div>
+{% endblock %}

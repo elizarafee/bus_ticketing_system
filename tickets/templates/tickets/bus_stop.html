@@ -1,0 +1,9 @@
+{% extends "tickets/layout.html" %}
+
+{% block body %}
+    <h1>Bus Stop Details of : {{ bus_stop.bus_stop_name }}</h1>
+    <div>
+        <h3>Bus Stop Name: {{ bus_stop.bus_stop_name }}</h3>
+        <h3>Bus Stop Code: {{ bus_stop.bus_stop_code }}</h3>
+    </div>
+{% endblock %}

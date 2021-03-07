@@ -22,3 +22,21 @@ def ticket_index(request):
        'tickets': Ticket.objects.all()
     })
 
+def bus(request, bus_id):
+   bus = Bus.objects.get(id=bus_id)
+   return render(request, 'tickets/bus.html', {
+      'bus': bus
+   })
+   
+def bus_stop(request, bus_stop_id):
+   bus_stop = Bus_Stop.objects.get(id=bus_stop_id)
+   return render(request, 'tickets/bus_stop.html', {
+      'bus_stop_id': bus_stop_id,
+      'bus_stop': bus_stop
+   })
+
+def ticket(request, ticket_id):
+   ticket = Ticket.objects.get(id=ticket_id)
+   return render(request, 'tickets/ticket.html', {
+      'ticket': ticket
+   })
