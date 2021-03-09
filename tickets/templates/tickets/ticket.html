@@ -19,6 +19,21 @@
         {% empty %}
             <li><strong>No Pessengers available!</strong></li>
         {% endfor %}
+        </ol>
+    </div>
+    <div>
+        <h2>Add Pessenger:</h2>
+        <form action="{% url 'tickets:book_ticket' ticket.id %}" method="post">
+            {% csrf_token %}
+            <select name="pessenger">
+                {% for pessenger in non_pessengers %}
+                    <option value="{{ pessenger.id }}">{{ pessenger.pessenger_name }}</option>
+                {% empty %}
+                    <li><strong>No Pessengers to add!</strong></li>
+                {% endfor %}
+            </select>
+            <input type="submit"/>
+        </form>
     </div>
     <a href="{% url 'tickets:ticket_index' %}">Back to view all available Tickets</a>
 {% endblock %}

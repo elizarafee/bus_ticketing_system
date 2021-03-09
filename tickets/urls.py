@@ -14,4 +14,6 @@ urlpatterns = [
 
     path("pessengers/", views.pessenger_index, name="pessenger_index"),
     path("pessenger/<str:pessenger_id>", views.pessenger, name="pessenger"),
+
+    path("<str:ticket_id>/bookticket", views.book_ticket, name="book_ticket"),
 ]

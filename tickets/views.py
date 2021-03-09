@@ -44,7 +44,8 @@ def ticket(request, ticket_id):
    ticket = Ticket.objects.get(id=ticket_id)
    return render(request, 'tickets/ticket.html', {
       'ticket': ticket,
-      'pessengers': ticket.pessengers.all()
+      'pessengers': ticket.pessengers.all(),
+      'non_pessengers': Pessenger.objects.exclude(ticket=ticket).all()
    })
 
 def pessenger(request, pessenger_id):
@@ -53,3 +54,10 @@ def pessenger(request, pessenger_id):
       'pessenger': pessenger,
       # 'tickets': ticket.pessengers.all()
    })
+
+def book_ticket(request, ticket_id):
+   if request.method == "POST":
+      ticket = Ticket.objects.get(pk=ticket_id)
+      pessenger = Pessenger.objects.get(pk=int(request.POST["pessenger"]))
+      pessenger.ticket.add(ticket)
+      return HttpResponseRedirect(reverse("tickets:ticket", args=(ticket.id,)))
