@@ -1,15 +1,23 @@
 {% extends "tickets/layout.html" %}
 
 {% block body %}
-    <h1>Ticket Details of Pessenger : {{ ticket.pessenger_name }}</h1>
+    <h1>Ticket Details:</h1>
     <div>
-        <h3>Pessenger Name: {{ ticket.pessenger_name }}</h3>
-        <h3>Phone Number: {{ ticket.phone_number }}</h3>
-        <h3>Dmail: {{ ticket.email }}</h3>
-        <h3>Departure: {{ ticket.departure }}</h3>
-        <h3>Arrival: {{ ticket.arrival }}</h3>
-        <h3>Bus: {{ ticket.bus_name }}</h3>
-        <h3>Date: {{ ticket.date }}</h3>
-        <h3>Time: {{ ticket.time }}</h3>
+    <ul>
+        <li>Departure: {{ ticket.departure }}</li>
+        <li>Arrival: {{ ticket.arrival }}</li>
+        <li>Bus: {{ ticket.bus }}</li>
+        <li>Date: {{ ticket.date }}</li>
+        <li>Time: {{ ticket.time }}</li>
+    </ul>
+    </div>
+    <h2>Pessenngers:</h2>
+    <div>
+        <ol>
+        {% for pessenger in pessengers %}
+            <li>{{ pessenger }}</li>
+        {% empty %}
+            <li><strong>No Pessengers available!</strong></li>
+        {% endfor %}
     </div>
 {% endblock %}

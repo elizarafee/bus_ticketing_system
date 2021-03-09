@@ -1,0 +1,10 @@
+{% extends "tickets/layout.html" %}
+
+{% block body %}
+    <h1>All Pessengers:</h1>
+    <ul>
+    {% for pessenger in pessengers %}
+        <li>{{ pessenger }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

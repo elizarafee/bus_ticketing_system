@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Bus, Bus_Stop, Ticket
+from .models import Bus, Bus_Stop, Ticket, Pessenger
 from django import forms
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
@@ -22,6 +22,11 @@ def ticket_index(request):
        'tickets': Ticket.objects.all()
     })
 
+def pessenger_index(request):
+    return render(request, 'tickets/pessenger_index.html', {
+       'pessengers': Pessenger.objects.all()
+    })
+
 def bus(request, bus_id):
    bus = Bus.objects.get(id=bus_id)
    return render(request, 'tickets/bus.html', {
@@ -38,5 +43,13 @@ def bus_stop(request, bus_stop_id):
 def ticket(request, ticket_id):
    ticket = Ticket.objects.get(id=ticket_id)
    return render(request, 'tickets/ticket.html', {
-      'ticket': ticket
+      'ticket': ticket,
+      'pessengers': ticket.pessengers.all()
+   })
+
+def pessenger(request, pessenger_id):
+   pessenger = Pessenger.objects.get(id=pessenger_id)
+   return render(request, 'tickets/pessenger.html', {
+      'pessenger': pessenger,
+      'tickets': ticket.pessengers.all()
    })

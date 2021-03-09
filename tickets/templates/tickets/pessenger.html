@@ -1,0 +1,22 @@
+{% extends "tickets/layout.html" %}
+
+{% block body %}
+    <h1>Pessenger Details:</h1>
+    <div>
+    <ul>
+        <h3>Name: {{ pessenger.pessenger_name }}</h3>
+        <h3>Phone Number: {{ pessenger.phone_number }}</h3>
+        <h3>Email: {{ pessenger.email }}</h3>
+    </ul>
+    </div>
+
+    <h2>Tickets:</h2>
+    <div>
+        <ol>
+        {% for ticket in tickets %}
+            <li>{{ ticket }}</li>
+        {% empty %}
+            <li><strong>No ticket is booked for <em>{{ pessenger.pessenger_name }}</em>!</strong></li>
+        {% endfor %}
+    </div>
+{% endblock %}

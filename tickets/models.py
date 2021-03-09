@@ -17,19 +17,25 @@ class Bus_Stop(models.Model):
         return f"Bus Stop Name: {self.bus_stop_name}, Bus Stop Code: {self.bus_stop_code}"
 
 class Ticket(models.Model):
+    departure = models.ForeignKey(Bus_Stop, on_delete=models.CASCADE, related_name="r_departure")
+    arrival = models.ForeignKey(Bus_Stop, on_delete=models.CASCADE, related_name="r_arrival")
+    bus = models.ForeignKey(Bus, on_delete=models.CASCADE, related_name="r_bus")
+    date = models.DateField(null=True, blank=True)
+    time = models.TimeField(null=True, blank=True)
+    
+    def __str__(self):
+        return f"Departure: {self.departure}, Arrival: {self.arrival}, Bus: {self.bus}, Date: {self.date}, Time: {self.time}"
+
+class Pessenger(models.Model):
     pessenger_name = models.CharField(max_length=50)
     phone_number = PhoneField(null=False, blank=False, unique=True)
     email = models.EmailField(max_length=254)
-    departure = models.ForeignKey(Bus_Stop, on_delete=models.CASCADE, related_name="r_departure")
-    arrival = models.ForeignKey(Bus_Stop, on_delete=models.CASCADE, related_name="r_arrival")
-    bus_name = models.ForeignKey(Bus, on_delete=models.CASCADE, related_name="r_bus_name")
-    date = models.DateField(null=True, blank=True)
-    time = models.TimeField(null=True, blank=True)
+    ticket = models.ManyToManyField(Ticket, blank=True, related_name='pessengers')
 
     def __str__(self):
-        return f"Pessenger Name: {self.pessenger_name}, Phone Number: {self.phone_number} ,Email: {self.email}, Departure: {self.departure}, Arrival: {self.arrival}, Bus: {self.bus_name}, Date: {self.date}, Time: {self.time}"
+        return f"Pessenger Name: {self.pessenger_name}, Phone Number: {self.phone_number}, Email: {self.email}"
 
-# python3 manage.py shell    
+# python3 manage.py shell
 # from tickets.models import *
 # bus0 = Bus(bus_name = 'BusA', bus_code = 'busA00')
 # bus1 = Bus(bus_name = 'BusA', bus_code = 'busA01')
