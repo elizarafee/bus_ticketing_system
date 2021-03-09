@@ -4,7 +4,9 @@
     <h1>All Booked Tickets:</h1>
     <ul>
     {% for ticket in tickets %}
+    <a href="{% url 'tickets:ticket' ticket.id %}">
         <li>{{ticket.id}}: {{ticket}}</li>
+    </a>
     {% endfor %}
     </ul>
 {% endblock %}

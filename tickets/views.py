@@ -51,5 +51,5 @@ def pessenger(request, pessenger_id):
    pessenger = Pessenger.objects.get(id=pessenger_id)
    return render(request, 'tickets/pessenger.html', {
       'pessenger': pessenger,
-      'tickets': ticket.pessengers.all()
+      # 'tickets': ticket.pessengers.all()
    })

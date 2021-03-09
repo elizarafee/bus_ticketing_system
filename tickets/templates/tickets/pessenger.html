@@ -4,13 +4,13 @@
     <h1>Pessenger Details:</h1>
     <div>
     <ul>
-        <h3>Name: {{ pessenger.pessenger_name }}</h3>
-        <h3>Phone Number: {{ pessenger.phone_number }}</h3>
-        <h3>Email: {{ pessenger.email }}</h3>
+        <li>Name: {{ pessenger.pessenger_name }}</li>
+        <li>Phone Number: {{ pessenger.phone_number }}</li>
+        <li>Email: {{ pessenger.email }}</li>
     </ul>
     </div>
 
-    <h2>Tickets:</h2>
+    <!-- <h2>Tickets:</h2>
     <div>
         <ol>
         {% for ticket in tickets %}
@@ -18,5 +18,6 @@
         {% empty %}
             <li><strong>No ticket is booked for <em>{{ pessenger.pessenger_name }}</em>!</strong></li>
         {% endfor %}
-    </div>
+    </div> -->
+    <a href="{% url 'tickets:pessenger_index' %}">Back to view all Pessengers</a>
 {% endblock %}

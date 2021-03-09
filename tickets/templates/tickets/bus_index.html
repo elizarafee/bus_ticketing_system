@@ -4,7 +4,9 @@
     <h1>All Buses:</h1>
     <ul>
     {% for bus in buses %}
+    <a href="{% url 'tickets:bus' bus.id %}">
         <li>{{bus.id}}: {{bus}}</li>
+    </a>
     {% endfor %}
     </ul>
 {% endblock %}

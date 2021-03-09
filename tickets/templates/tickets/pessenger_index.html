@@ -4,7 +4,9 @@
     <h1>All Pessengers:</h1>
     <ul>
     {% for pessenger in pessengers %}
+    <a href="{% url 'tickets:pessenger' pessenger.id %}">
         <li>{{ pessenger }}</li>
+    </a>
     {% endfor %}
     </ul>
 {% endblock %}
