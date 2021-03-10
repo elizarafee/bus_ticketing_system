@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'phone_field',
     'tickets',
-    'users'
+    'users',
+    "bootstrap4"
 ]
 
 MIDDLEWARE = [
