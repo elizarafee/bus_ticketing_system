@@ -1,12 +1,12 @@
 {% extends "tickets/layout.html" %}
 
 {% block body %}
-    <h1>Pessenger Details:</h1>
+    <h1>passenger Details:</h1>
     <div>
     <ul>
-        <li>Name: {{ pessenger.pessenger_name }}</li>
-        <li>Phone Number: {{ pessenger.phone_number }}</li>
-        <li>Email: {{ pessenger.email }}</li>
+        <li>Name: {{ passenger.passenger_name }}</li>
+        <li>Phone Number: {{ passenger.phone_number }}</li>
+        <li>Email: {{ passenger.email }}</li>
     </ul>
     </div>
 
@@ -16,8 +16,8 @@
         {% for ticket in tickets %}
             <li>{{ ticket }}</li>
         {% empty %}
-            <li><strong>No ticket is booked for <em>{{ pessenger.pessenger_name }}</em>!</strong></li>
+            <li><strong>No ticket is booked for <em>{{ passenger.passenger_name }}</em>!</strong></li>
         {% endfor %}
     </div> -->
-    <a href="{% url 'tickets:pessenger_index' %}">Back to view all Pessengers</a>
+    <a href="{% url 'tickets:passenger_index' %}">Back to view all passengers</a>
 {% endblock %}

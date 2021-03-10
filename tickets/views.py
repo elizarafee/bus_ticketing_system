@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Bus, Bus_Stop, Ticket, Pessenger
+from .models import Bus, Bus_Stop, Ticket, Passenger
 from django import forms
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
@@ -22,9 +22,9 @@ def ticket_index(request):
        'tickets': Ticket.objects.all()
     })
 
-def pessenger_index(request):
-    return render(request, 'tickets/pessenger_index.html', {
-       'pessengers': Pessenger.objects.all()
+def passenger_index(request):
+    return render(request, 'tickets/passenger_index.html', {
+       'passengers': Passenger.objects.all()
     })
 
 def bus(request, bus_id):
@@ -44,20 +44,20 @@ def ticket(request, ticket_id):
    ticket = Ticket.objects.get(id=ticket_id)
    return render(request, 'tickets/ticket.html', {
       'ticket': ticket,
-      'pessengers': ticket.pessengers.all(),
-      'non_pessengers': Pessenger.objects.exclude(ticket=ticket).all()
+      'passengers': ticket.passengers.all(),
+      'non_passengers': Passenger.objects.exclude(ticket=ticket).all()
    })
 
-def pessenger(request, pessenger_id):
-   pessenger = Pessenger.objects.get(id=pessenger_id)
-   return render(request, 'tickets/pessenger.html', {
-      'pessenger': pessenger,
-      # 'tickets': ticket.pessengers.all()
+def passenger(request, passenger_id):
+   passenger = Passenger.objects.get(id=passenger_id)
+   return render(request, 'tickets/passenger.html', {
+      'passenger': passenger,
+      # 'tickets': ticket.passengers.all()
    })
 
 def book_ticket(request, ticket_id):
    if request.method == "POST":
       ticket = Ticket.objects.get(pk=ticket_id)
-      pessenger = Pessenger.objects.get(pk=int(request.POST["pessenger"]))
-      pessenger.ticket.add(ticket)
+      passenger = Passenger.objects.get(pk=int(request.POST["passenger"]))
+      passenger.ticket.add(ticket)
       return HttpResponseRedirect(reverse("tickets:ticket", args=(ticket.id,)))

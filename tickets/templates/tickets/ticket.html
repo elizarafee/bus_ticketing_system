@@ -14,22 +14,22 @@
     <h2>Pessenngers:</h2>
     <div>
         <ol>
-        {% for pessenger in pessengers %}
-            <li>{{ pessenger }}</li>
+        {% for passenger in passengers %}
+            <li>{{ passenger }}</li>
         {% empty %}
-            <li><strong>No Pessengers available!</strong></li>
+            <li><strong>No passengers available!</strong></li>
         {% endfor %}
         </ol>
     </div>
     <div>
-        <h2>Add Pessenger:</h2>
+        <h2>Add passenger:</h2>
         <form action="{% url 'tickets:book_ticket' ticket.id %}" method="post">
             {% csrf_token %}
-            <select name="pessenger">
-                {% for pessenger in non_pessengers %}
-                    <option value="{{ pessenger.id }}">{{ pessenger.pessenger_name }}</option>
+            <select name="passenger">
+                {% for passenger in non_passengers %}
+                    <option value="{{ passenger.id }}">{{ passenger.passenger_name }}</option>
                 {% empty %}
-                    <li><strong>No Pessengers to add!</strong></li>
+                    <li><strong>No passengers to add!</strong></li>
                 {% endfor %}
             </select>
             <input type="submit"/>

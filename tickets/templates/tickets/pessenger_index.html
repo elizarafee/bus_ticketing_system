@@ -1,11 +1,11 @@
 {% extends "tickets/layout.html" %}
 
 {% block body %}
-    <h1>All Pessengers:</h1>
+    <h1>All passengers:</h1>
     <ul>
-    {% for pessenger in pessengers %}
-    <a href="{% url 'tickets:pessenger' pessenger.id %}">
-        <li>{{ pessenger }}</li>
+    {% for passenger in passengers %}
+    <a href="{% url 'tickets:passenger' passenger.id %}">
+        <li>{{ passenger }}</li>
     </a>
     {% endfor %}
     </ul>
